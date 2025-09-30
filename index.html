@@ -274,9 +274,8 @@
 
     <!-- JavaScript for Form Handling -->
     <script>
-        // Placeholder for the Google Apps Script Web App URL
-        // **IMPORTANT: YOU MUST REPLACE THIS WITH YOUR DEPLOYED APPS SCRIPT URL**
-        const SHEET_API_URL = 'https://script.google.com/a/macros/emetycpei.com/s/AKfycbxazW08plp6Adf25C5ZiNcKeDyYZhlgoee1ByhHN8kShWmwsi9pR2ezF88V9F0C7P2N/exec'; 
+        // *** IMPORTANT: The Google Apps Script Web App URL is now correctly set here. ***
+        const SHEET_API_URL = 'https://script.google.com/macros/s/AKfycbxYzv9ZJh07MddYsxq6BUHF2HTC2bmNzhC4LR1V0h2wIeBvkHeCewoaTKYpkYib-wvN/exec'; 
 
         function showModal(title, body, isSuccess) {
             const modal = document.getElementById('statusModal');
@@ -303,16 +302,7 @@
 
             form.addEventListener('submit', async function(event) {
                 event.preventDefault();
-
-                if (SHEET_API_URL === 'https://script.google.com/a/macros/emetycpei.com/s/AKfycbxazW08plp6Adf25C5ZiNcKeDyYZhlgoee1ByhHN8kShWmwsi9pR2ezF88V9F0C7P2N/exec') {
-                    showModal(
-                        "Configuration Required", 
-                        "Please deploy your Google Apps Script and replace 'https://script.google.com/a/macros/emetycpei.com/s/AKfycbxazW08plp6Adf25C5ZiNcKeDyYZhlgoee1ByhHN8kShWmwsi9pR2ezF88V9F0C7P2N/exec'.",
-                        false
-                    );
-                    return;
-                }
-
+                
                 // Disable button and show loading state
                 submitButton.disabled = true;
                 submitButton.textContent = 'Sending...';
@@ -333,8 +323,7 @@
                     // Send data to the Apps Script web app
                     const response = await fetch(SHEET_API_URL, {
                         method: 'POST',
-                        // Note: We don't use 'application/json' here because the Apps Script handles form data directly
-                        // using the built-in parameters from the POST request.
+                        // Note: We send JSON data, which the Apps Script's doPost function is configured to parse.
                         body: JSON.stringify(data)
                     });
 
@@ -355,7 +344,7 @@
                     console.error('Submission Error:', error);
                     showModal(
                         "Submission Failed", 
-                        `An error occurred: ${error.message}. Check the console for details and ensure the Web App URL is correct.`,
+                        `An error occurred: ${error.message}. Please check your browser console for details.`,
                         false
                     );
                 } finally {
