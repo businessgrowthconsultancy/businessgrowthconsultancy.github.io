@@ -12,8 +12,11 @@
         
         /* Define Custom Colors */
         .bg-custom-black { background-color: #000000; }
-        .bg-custom-cream { background-color: #f5f2e8; } /* Existing light cream (Used for global background, header, and now contact section) */
-        .bg-new-cream { background-color: #f0ede6; } /* Custom color (Not used now) */
+        .bg-custom-cream { background-color: #f5f2e8; } /* Light cream (Used for global background, header, and contact section) */
+        
+        /* UPDATED: Define the text color to match the cream background color (#f5f2e8) */
+        .text-off-white { color: #f5f2e8; } /* Now explicitly set to the background cream color */ 
+
         .text-custom-black { color: #000000; }
         .bg-custom-yellow { background-color: #ffc703; } /* Primary Accent Yellow */
 
@@ -46,6 +49,20 @@
             padding-top: 5rem;
             padding-bottom: 5rem;
         }
+
+        /* Custom style to align the info block to the middle of the 'Growth' line */
+        /* This large margin pushes the content to the right, aligning it visually */
+        .description-alignment {
+            margin-left: 0;
+        }
+
+        /* On medium screens and up, apply a calculated margin to align the text under 'Growth' */
+        @media (min-width: 768px) {
+            .description-alignment {
+                margin-left: 20%; /* Adjusted for better alignment near 'ow' gap */
+            }
+        }
+
 
         /* Contact Form Layout - ensures two columns for name/email */
         .form-row {
@@ -123,19 +140,21 @@
 
     <main>
         <!-- 1. Custom Hero/Brand Message Section (Remains dark for dramatic contrast) -->
-        <section id="hero-custom" class="bg-custom-black text-white p-6 md:p-12 flex items-center justify-center">
-            <div class="container mx-auto max-w-4xl text-left">
+        <section id="hero-custom" class="bg-custom-black text-off-white p-6 md:p-12 flex items-center justify-center">
+            <div class="container mx-auto max-w-7xl text-left">
                 <!-- Large Logo/Title -->
+                <!-- Applied text-off-white to Business and Consultancy -->
                 <h1 class="text-6xl md:text-8xl lg:text-9xl font-extrabold mb-8">
-                    Business.
+                    <span class="text-off-white">Business.</span>
                     <span class="block">
-                        <span class="text-custom-yellow">Growth.</span>Consultancy.
+                        <span class="text-custom-yellow">Growth.</span><span class="text-off-white">Consultancy.</span>
                     </span>
                 </h1>
                 
-                <div class="max-w-3xl ml-auto border-t border-custom-yellow pt-8">
+                <!-- Description Block: Uses the custom CSS class 'description-alignment' for spacing. -->
+                <div class="description-alignment max-w-4xl border-t border-custom-yellow pt-8">
                     <p class="text-sm font-bold text-custom-yellow uppercase mb-2">Info</p>
-                    <!-- First Paragraph -->
+                    <!-- All body text uses the text-off-white inherited from the section parent class -->
                     <p class="text-2xl md:text-3xl leading-relaxed font-light">
                         Experience a <span class="text-custom-yellow">new dimension</span> of business strategy fuelled by the <span class="text-custom-yellow font-bold">art</span> and <span class="text-custom-yellow font-bold">science</span> of <span class="text-custom-yellow font-bold">business growth</span>.
                     </p>
@@ -236,23 +255,24 @@
     </div>
 
     <!-- Final Footer Section (Black background, text is visible) -->
-    <footer class="bg-custom-black text-white pt-8 pb-8">
+    <footer class="bg-custom-black text-off-white pt-8 pb-8">
         <div class="container mx-auto px-6 max-w-7xl">
             <!-- Footer Content (Contact/Logo Area) -->
-            <div class="text-center md:text-left">
+            <div class="text-left">
                 <!-- Footer Contact text is what your image shows as yellow, so we keep the yellow text here -->
                 <p class="text-xl font-bold text-custom-yellow uppercase mb-2">Contact</p>
+                <!-- Applied text-off-white to Business and Consultancy -->
                 <h2 class="text-5xl md:text-6xl font-extrabold leading-none">
-                    Business.
+                    <span class="text-off-white">Business.</span>
                     <span class="block">
-                        <span class="text-custom-yellow">Growth.</span>Consultancy
+                        <span class="text-custom-yellow">Growth.</span><span class="text-off-white">Consultancy</span>
                     </span>
                 </h2>
             </div>
             
             <!-- Copyright/Bottom Bar -->
             <div class="mt-12 pt-6 border-t border-gray-800 text-center">
-                <p class="text-sm text-gray-500">&copy; 2024 Business Growth Consultancy. All rights reserved.</p>
+                <p class="text-sm opacity-75 text-off-white">&copy; 2024 Business Growth Consultancy an i&CTM brand. All rights reserved.</p>
             </div>
         </div>
     </footer>
