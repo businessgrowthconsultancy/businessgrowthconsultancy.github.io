@@ -50,8 +50,6 @@
             padding-bottom: 5rem;
         }
 
-        /* REMOVED: Custom style for .description-alignment to ensure left/right alignment matches other sections */
-        
         /* Contact Form Layout - ensures two columns for name/email */
         .form-row {
             display: flex;
@@ -138,18 +136,23 @@
                     </span>
                 </h1>
                 
-                <!-- Description Block: Now flush left, aligned with the Contact section content -->
-                <div class="max-w-4xl border-t border-custom-yellow pt-8">
+                <!-- Description Block: Retaining custom offset and width from previous step -->
+                <div class="border-t border-custom-yellow pt-8" 
+                     style="margin-left: 130px; width: calc(100% - 130px);">
                     <p class="text-sm font-bold text-custom-yellow uppercase mb-2">Info</p>
-                    <!-- All body text uses the text-off-white inherited from the section parent class -->
-                    <p class="text-2xl md:text-3xl leading-relaxed font-light">
-                        Experience a <span class="text-custom-yellow">new dimension</span> of business strategy fuelled by the <span class="text-custom-yellow font-bold">art</span> and <span class="text-custom-yellow font-bold">science</span> of <span class="text-custom-yellow font-bold">business growth</span>.
+                    
+                    <!-- Text Justified Paragraph 1: "new dimension" is now correctly bolded -->
+                    <p class="text-2xl md:text-3xl leading-relaxed font-light text-justify">
+                        Experience a <span class="text-custom-yellow font-bold">new dimension</span> of business strategy fuelled by the <span class="text-custom-yellow font-bold">art</span> and <span class="text-custom-yellow font-bold">science</span> of <span class="text-custom-yellow font-bold">business growth</span>.
                     </p>
-                    <!-- Removed internal border-b -->
-                    <p class="text-xl md:text-2xl leading-relaxed mt-4">
+                    
+                    <!-- Text Justified Paragraph 2 -->
+                    <p class="text-xl md:text-2xl leading-relaxed mt-4 text-justify">
                         We fuse <span class="text-custom-yellow font-bold">brand building</span> with <span class="text-custom-yellow font-bold">cutting-edge technology</span> to overhaul <span class="text-custom-red font-bold">outdated</span> operations, helping you <span class="text-custom-yellow font-bold">scale</span> and <span class="text-custom-yellow font-bold">boost profitability</span>. With over a decade of experience in the SaaS, DaaS, and Retail/E-commerce sectors, we translate complex business <span class="text-custom-yellow font-bold">goals</span> into clear, actionable <span class="text-custom-yellow font-bold">insights</span>.
                     </p>
-                    <p class="text-xl md:text-2xl leading-relaxed mt-4">
+                    
+                    <!-- Text Justified Paragraph 3 -->
+                    <p class="text-xl md:text-2xl leading-relaxed mt-4 text-justify">
                         Our <span class="text-custom-yellow font-bold">data-centric approach</span> doesn't just find new <span class="text-custom-yellow font-bold">opportunities</span>—it challenges conventional business <span class="text-custom-red font-bold">boundaries</span>. We believe in active <span class="text-custom-yellow font-bold">collaboration</span>, empowering you and your team with the tools and understanding needed for lasting <span class="text-custom-yellow font-bold">success</span>.
                     </p>
                 </div>
@@ -223,9 +226,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- REMOVED: Dynamic Angled Divider (CREAM -> BLACK TRANSITION) -->
-        <!-- The footer now connects directly to the Contact section -->
         
     </main>
 
