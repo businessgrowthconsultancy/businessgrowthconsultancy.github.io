@@ -4,106 +4,297 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Business Growth Consultancy</title>
+    <!-- Tailwind CSS CDN for utility classes -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        /* Custom Font and Global Styles */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+        
+        /* Define Custom Colors */
+        .bg-custom-black { background-color: #000000; }
+        .bg-custom-cream { background-color: #f5f2e8; } /* Existing light cream (Used for global background, header, and now contact section) */
+        .bg-new-cream { background-color: #f0ede6; } /* Custom color (Not used now) */
+        .text-custom-black { color: #000000; }
+        .bg-custom-yellow { background-color: #ffc703; } /* Primary Accent Yellow */
+
         body {
             font-family: 'Inter', sans-serif;
             transition: opacity ease-in 0.2s;
+            /* GLOBAL CHANGE: Set default background to the light cream color */
+            background-color: #f5f2e8; 
+            color: #000000; /* Default text is black */
+        }
+
+        /* Primary Yellow Accent Color (The requested #ffc703) */
+        .text-custom-yellow {
+            color: #ffc703;
+        }
+        
+        /* Secondary Red Accent Color (The requested #c62c0d) */
+        .text-custom-red {
+            color: #c62c0d; /* NEW ACCENT COLOR */
+        }
+        
+        /* Custom Border Color Utility */
+        .border-custom-yellow {
+            border-color: #ffc703;
+        }
+
+        /* To replicate the dark full-width hero seen in 'brand-message.jpg' */
+        #hero-custom {
+            min-height: 80vh; 
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+
+        /* Contact Form Layout - ensures two columns for name/email */
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+        .form-row > * {
+            flex: 1;
+        }
+
+        /* Custom Modal Styling for Success/Error Messages */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none; /* Hidden by default */
+            place-items: center;
+            z-index: 100;
+        }
+        .modal.open {
+            display: grid;
+        }
+
+        /* Explicitly define focus styles for the custom color */
+        .focus\:border-custom-yellow:focus {
+             border-color: #ffc703;
+        }
+        .focus\:ring-custom-yellow:focus {
+            --tw-ring-color: #ffc703;
+            --tw-ring-opacity: 1;
+            /* Use standard ring size of 3px, plus the ring-offset-width (which is 0 here) */
+            box-shadow: 0 0 0 calc(3px + 0px) var(--tw-ring-color);
+        }
+        
+        /* Style for the custom curved line under the Contact heading */
+        .underline-svg {
+            position: absolute;
+            bottom: -5px; /* Adjust vertical position */
+            left: 50%; /* Center under 'in' */
+            transform: translateX(-50%);
+            width: 110%; /* Ensure it spans both 'in' and 'touch' */
+            height: 10px;
+            z-index: 10;
+        }
+        /* Custom wrapper for the contact heading to handle the underline position */
+        .contact-heading-wrapper {
+            display: inline-block;
+            position: relative;
+        }
+        
+        /* Custom style for the reduced divider height */
+        .reduced-divider-height {
+            height: 83px; /* 160px (h-40) - 77px = 83px */
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased">
-    <header class="p-6 bg-white shadow-sm sticky top-0 z-50">
-        <nav class="container mx-auto flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-gray-900">
-                Business.Growth.Consultancy
+<body class="antialiased">
+    <!-- Header/Navigation (Light cream background) -->
+    <header class="p-4 bg-custom-cream shadow-sm sticky top-0 z-50 border-b border-gray-200">
+        <nav class="container mx-auto flex justify-between items-center max-w-7xl">
+            <a href="#" class="text-2xl font-black text-custom-black">
+                Business.
+                <span class="text-custom-yellow">Growth.</span>
+                Consultancy
             </a>
-            <ul class="hidden md:flex space-x-6">
-                <li><a href="#services" class="hover:text-gray-600 transition-colors duration-200">Services</a></li>
-                <li><a href="#about" class="hover:text-gray-600 transition-colors duration-200">About</a></li>
-                <li><a href="#contact" class="hover:text-gray-600 transition-colors duration-200">Contact</a></li>
+            <ul class="hidden md:flex space-x-6 text-custom-black">
+                <li><a href="#hero-custom" class="hover:text-custom-yellow transition-colors duration-200 font-semibold">Home</a></li>
+                <li><a href="#contact-section" class="hover:text-custom-yellow transition-colors duration-200 font-semibold">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section class="relative h-[calc(100vh-6rem)] flex items-center justify-center p-6 text-center overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-100 opacity-70"></div>
-            <div class="relative z-10 max-w-4xl mx-auto">
-                <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 mb-4 leading-tight">
-                    Find your business’ new cheat code.
+        <!-- 1. Custom Hero/Brand Message Section (Remains dark for dramatic contrast) -->
+        <section id="hero-custom" class="bg-custom-black text-white p-6 md:p-12 flex items-center justify-center">
+            <div class="container mx-auto max-w-4xl text-left">
+                <!-- Large Logo/Title -->
+                <h1 class="text-6xl md:text-8xl lg:text-9xl font-extrabold mb-8">
+                    Business.
+                    <span class="block">
+                        <span class="text-custom-yellow">Growth.</span>Consultancy.
+                    </span>
                 </h1>
-                <p class="text-xl md:text-2xl text-gray-600 mb-8">
-                    Experience a new dimension of business strategy .Stop guessing. Deploy the optimised, next-level growth build.
-                </p>
-                <a href="#contact" class="inline-block px-8 py-4 bg-blue-600 text-white font-semibold rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300">
-                    Get a Free Deep-Dive. No Payment Needed to Unlock the Intel. 
-                </a>
-            </div>
-        </section>
-
-        <section id="services" class="container mx-auto py-16 px-6">
-            <h2 class="text-4xl font-bold text-center text-gray-900 mb-12">Our Services</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105">
-                    <h3 class="text-2xl font-bold mb-4 text-gray-900">Growth Strategy</h3>
-                    <p class="text-gray-600">
-                        Develop Stop winging it. Get the next-level growth build, perfectly matched to your model. We map the field and optimise your run.
+                
+                <div class="max-w-3xl ml-auto border-t border-custom-yellow pt-8">
+                    <p class="text-sm font-bold text-custom-yellow uppercase mb-2">Info</p>
+                    <!-- First Paragraph -->
+                    <p class="text-2xl md:text-3xl leading-relaxed font-light">
+                        Experience a <span class="text-custom-yellow">new dimension</span> of business strategy fuelled by the <span class="text-custom-yellow font-bold">art</span> and <span class="text-custom-yellow font-bold">science</span> of <span class="text-custom-yellow font-bold">business growth</span>.
                     </p>
-                </div>
-                <div class="bg-white p-8 rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105">
-                    <h3 class="text-2xl font-bold mb-4 text-gray-900">Brand Building</h3>
-                    <p class="text-gray-600">
-                        Get a main-character aesthetic. Build the brand that breaks the meta and makes high-score connections.
+                    <!-- Formatting text to ensure it looks good on black background -->
+                    <p class="text-xl md:text-2xl leading-relaxed mt-4">
+                        We fuse <span class="text-custom-yellow font-bold">brand building</span> with <span class="text-custom-yellow font-bold">cutting-edge technology</span> to overhaul <span class="text-custom-red font-bold">outdated</span> operations, helping you <span class="text-custom-yellow font-bold">scale</span> and <span class="text-custom-yellow font-bold">boost profitability</span>. With over a decade of experience in the SaaS, DaaS, and Retail/E-commerce sectors, we translate complex business <span class="text-custom-yellow font-bold">goals</span> into clear, actionable <span class="text-custom-yellow font-bold">insights</span>.
                     </p>
-                </div>
-                <div class="bg-white p-8 rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105">
-                    <h3 class="text-2xl font-bold mb-4 text-gray-900">Operational Excellence</h3>
-                    <p class="text-gray-600">
-                        Time to ditch the noob moves. Craft the ultimate strategy and dominate the growth leaderboard.
+                    <p class="text-xl md:text-2xl leading-relaxed mt-4">
+                        Our <span class="text-custom-yellow font-bold">data-centric approach</span> doesn't just find new <span class="text-custom-yellow font-bold">opportunities</span>—it challenges conventional business <span class="text-custom-red font-bold">boundaries</span>. We believe in active <span class="text-custom-yellow font-bold">collaboration</span>, empowering you and your team with the tools and understanding needed for lasting <span class="text-custom-yellow font-bold">success</span>.
                     </p>
                 </div>
             </div>
         </section>
 
-        <section id="about" class="bg-white py-16 px-6">
-            <div class="container mx-auto max-w-4xl text-center">
-                <h2 class="text-4xl font-bold text-gray-900 mb-8">About Us</h2>
-                <p class="text-lg text-gray-600 leading-relaxed">
-                    Business Growth Consultancy (an I&CTM power-up) enables exponential growth in companies that need to reorganise to scale level. We skip the slow grind by fusing elite strategy with essential tech products for a business system overhaul. We give leaders the map and the optimal build they need to navigate any volatile scale up situation. We guarantee long term wins. 
-                </p>
+        <!-- 2. Contact Form Section (BACKGROUND IS CREAM, TEXT IS BLACK/YELLOW) -->
+        <section id="contact-section" class="bg-custom-cream py-16 px-6">
+            <div class="container mx-auto max-w-7xl">
+                <div class="flex flex-col md:flex-row gap-12">
+                    <!-- Left Side: Title -->
+                    <div class="md:w-1/4 md:text-right">
+                        <h2 class="text-6xl font-black text-custom-black leading-tight">
+                            Get 
+                            <span class="contact-heading-wrapper">
+                                <!-- 'in' is yellow on cream background for visual accent -->
+                                <span class="text-custom-yellow">in</span> 
+                                <svg class="underline-svg" viewBox="0 0 100 10" preserveAspectRatio="none">
+                                    <!-- Underline remains dark gray for visibility -->
+                                    <path d="M 0 5 C 25 2, 75 8, 100 5" stroke="#4b5563" stroke-width="1.5" fill="none"/> 
+                                </svg>
+                            </span>
+                            <span class="block">touch</span>
+                        </h2>
+                    </div>
+
+                    <!-- Right Side: Form (Cream background, black text) -->
+                    <div class="md:w-3/4">
+                        <form id="contactForm" class="space-y-6 p-8 rounded-lg shadow-none">
+                            <!-- Name Row (Two Columns) -->
+                            <div class="form-row">
+                                <label class="block">
+                                    <span class="text-sm font-semibold text-custom-black">Name <span class="text-custom-red">(required)</span></span>
+                                    <!-- Inputs use black text, clear border contrast on cream -->
+                                    <input type="text" id="firstName" name="firstName" placeholder="Your Name" required class="mt-1 block w-full border-b border-gray-900 focus:border-custom-black focus:ring-custom-black p-2 bg-transparent text-custom-black transition-colors rounded-t-md placeholder-gray-700">
+                                </label>
+                                <label class="block">
+                                    <span class="text-sm font-semibold text-custom-black">Last Name</span>
+                                    <input type="text" id="lastName" name="lastName" placeholder="Last Name" class="mt-1 block w-full border-b border-gray-900 focus:border-custom-black focus:ring-custom-black p-2 bg-transparent text-custom-black transition-colors rounded-t-md placeholder-gray-700">
+                                </label>
+                            </div>
+                            
+                            <!-- Email Row (Full Width) -->
+                            <label class="block">
+                                <span class="text-sm font-semibold text-custom-black">Email <span class="text-custom-red">(required)</span></span>
+                                <span class="block text-xs text-gray-800 mt-1">Sign up for news and updates</span>
+                                <input type="email" id="email" name="email" required class="mt-1 block w-full border-b border-gray-900 focus:border-custom-black focus:ring-custom-black p-2 bg-transparent text-custom-black transition-colors rounded-t-md placeholder-gray-700">
+                            </label>
+
+                            <!-- Subject Row (Full Width) -->
+                            <label class="block">
+                                <span class="text-sm font-semibold text-custom-black">Subject</span>
+                                <input type="text" id="subject" name="subject" class="mt-1 block w-full border-b border-gray-900 focus:border-custom-black focus:ring-custom-black p-2 bg-transparent text-custom-black transition-colors rounded-t-md placeholder-gray-700">
+                            </label>
+
+                            <!-- Message Row (Full Width Textarea) -->
+                            <label class="block">
+                                <span class="text-sm font-semibold text-custom-black">Message <span class="text-custom-red">(required)</span></span>
+                                <textarea id="message" name="message" rows="6" required class="mt-1 block w-full border border-gray-900 focus:border-custom-black focus:ring-custom-black p-3 bg-transparent text-custom-black transition-colors rounded-md resize-y placeholder-gray-700"></textarea>
+                            </label>
+
+                            <!-- Submit Button (Minimalist styling) -->
+                            <div class="pt-4">
+                                <button type="submit" class="px-6 py-2 border border-black text-custom-black font-semibold text-sm hover:bg-gray-800 hover:text-custom-yellow transition-colors rounded-sm">
+                                    Submit
+                                </button>
+                                <p id="submissionMessage" class="mt-3 text-sm hidden"></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </section>
+
+        <!-- REMOVED: Dynamic Angled Divider (CREAM -> BLACK TRANSITION) -->
+        <!-- The footer now connects directly to the Contact section -->
+        
     </main>
 
-    <footer id="contact" class="bg-gray-900 text-gray-300 py-12">
-        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-            <div class="space-y-4">
-                <h3 class="text-xl font-semibold text-white">Contact Us</h3>
-                <p class="flex items-center justify-center md:justify-start">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-blue-500"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                    hello@businessgrowthconsultancy.eu
-                </p>
-            </div>
-            <div class="space-y-4">
-                <h3 class="text-xl font-semibold text-white">Quick Links</h3>
-                <ul class="space-y-2">
-                    <li><a href="#services" class="hover:text-white transition-colors duration-200">Services</a></li>
-                    <li><a href="#about" class="hover:text-white transition-colors duration-200">About</a></li>
-                    <li><a href="#contact" class="hover:text-white transition-colors duration-200">Contact</a></li>
-                </ul>
-            </div>
-            <div class="space-y-4">
-                <h3 class="text-xl font-semibold text-white">ICTM Brand</h3>
-                <p class="text-sm">
-                    Business Growth Consultancy is a proud brand of ICTM (Innovative Creative Tech Minds).
-                </p>
-            </div>
+    <!-- Success/Error Message Modal (Used instead of alert()) -->
+    <div id="statusModal" class="modal">
+        <div class="bg-custom-cream p-8 rounded-xl shadow-2xl max-w-sm w-full text-center transform transition-all duration-300 scale-95 modal-content">
+            <h3 id="modalTitle" class="text-2xl font-bold mb-4 text-custom-black"></h3>
+            <p id="modalBody" class="text-gray-600 mb-6"></p>
+            <button onclick="document.getElementById('statusModal').classList.remove('open')" 
+                    class="w-full bg-custom-black text-custom-yellow py-3 rounded-lg font-semibold border border-custom-yellow hover:opacity-90 transition-opacity">
+                Close
+            </button>
         </div>
-        <div class="mt-8 pt-8 border-t border-gray-700 text-center">
-            <p class="text-sm text-gray-500">&copy; 2024 Business Growth Consultancy. All rights reserved.</p>
+    </div>
+
+    <!-- Final Footer Section (Black background, text is visible) -->
+    <footer class="bg-custom-black text-white pt-8 pb-8">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <!-- Footer Content (Contact/Logo Area) -->
+            <div class="text-center md:text-left">
+                <!-- Footer Contact text is what your image shows as yellow, so we keep the yellow text here -->
+                <p class="text-xl font-bold text-custom-yellow uppercase mb-2">Contact</p>
+                <h2 class="text-5xl md:text-6xl font-extrabold leading-none">
+                    Business.
+                    <span class="block">
+                        <span class="text-custom-yellow">Growth.</span>Consultancy
+                    </span>
+                </h2>
+            </div>
+            
+            <!-- Copyright/Bottom Bar -->
+            <div class="mt-12 pt-6 border-t border-gray-800 text-center">
+                <p class="text-sm text-gray-500">&copy; 2024 Business Growth Consultancy. All rights reserved.</p>
+            </div>
         </div>
     </footer>
+
+    <!-- JavaScript for Form Handling -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            // 1. Prevent the default form submission (page reload)
+            event.preventDefault();
+
+            // 2. Get form elements and modal elements
+            const form = event.target;
+            const modal = document.getElementById('statusModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
+
+            // 3. Simulate data collection (for a real app, you would send this to a server)
+            const formData = {
+                firstName: form.elements['firstName'].value,
+                lastName: form.elements['lastName'].value,
+                email: form.elements['email'].value,
+                subject: form.elements['subject'].value,
+                message: form.elements['message'].value
+            };
+
+            // Log data to console (simulating successful submission)
+            console.log('Form data collected:', formData);
+
+            // 4. Display success message in the custom modal
+            modalTitle.textContent = "Thank You!";
+            modalBody.textContent = "Your message has been successfully sent to our team. We will be in touch shortly.";
+            
+            // Apply success styling 
+            modalTitle.classList.remove('text-red-600');
+            modalTitle.classList.add('text-green-600');
+
+            // 5. Open the modal
+            modal.classList.add('open');
+
+            // 6. Clear the form fields after successful submission
+            form.reset();
+        });
+    </script>
 </body>
 </html>
