@@ -86,6 +86,12 @@
             box-shadow: 0 0 0 calc(3px + 0px) var(--tw-ring-color);
         }
         
+        /* Custom wrapper for the contact heading to handle the underline position */
+        .contact-heading-wrapper {
+            display: inline-block;
+            position: relative;
+        }
+
         /* Style for the custom curved line under the Contact heading */
         .underline-svg {
             position: absolute;
@@ -95,11 +101,6 @@
             width: 110%; /* Ensure it spans both 'in' and 'touch' */
             height: 10px;
             z-index: 10;
-        }
-        /* Custom wrapper for the contact heading to handle the underline position */
-        .contact-heading-wrapper {
-            display: inline-block;
-            position: relative;
         }
         
         /* Custom style for the reduced divider height */
@@ -136,14 +137,14 @@
                     </span>
                 </h1>
                 
-                <!-- Description Block: Retaining custom offset and width from previous step -->
+                <!-- Description Block: FINAL MARGIN ADJUSTMENT to 50px on the right for perfect alignment. -->
                 <div class="border-t border-custom-yellow pt-8" 
-                     style="margin-left: 130px; width: calc(100% - 130px);">
+                     style="margin-left: 130px; margin-right: 50px; width: auto;">
                     <p class="text-sm font-bold text-custom-yellow uppercase mb-2">Info</p>
                     
-                    <!-- Text Justified Paragraph 1: "new dimension" is now correctly bolded -->
+                    <!-- Text Justified Paragraph 1: 'art' is now white/uncolored, but still bold for prominence -->
                     <p class="text-2xl md:text-3xl leading-relaxed font-light text-justify">
-                        Experience a <span class="text-custom-yellow font-bold">new dimension</span> of business strategy fuelled by the <span class="text-custom-yellow font-bold">art</span> and <span class="text-custom-yellow font-bold">science</span> of <span class="text-custom-yellow font-bold">business growth</span>.
+                        Experience a <span class="text-custom-yellow font-bold">new dimension</span> of business strategy fuelled by the <span class="font-bold">art</span> and <span class="text-custom-yellow font-bold">science</span> of <span class="text-custom-yellow font-bold">business growth</span>.
                     </p>
                     
                     <!-- Text Justified Paragraph 2 -->
